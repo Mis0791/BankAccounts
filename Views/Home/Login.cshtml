@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "A Web Page";
+}
+
+<div>
+    <br>
+    <h3>Login</h3>
+    <br>
+    <div>
+        <form action="login" method="POST">
+            Email: <input type="email" name="Email"/><br>
+            @ViewBag.Email
+            <br>
+            Password: <input type="password" name="Password"/><br>
+            @ViewBag.Password
+            <br>
+            <input type="submit" value"Submit"/>
+        </form>  
+        <br> 
+        <a asp-action="Index">Need to Register?</a>
+    </div>
+</div>

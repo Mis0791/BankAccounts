@@ -1,0 +1,43 @@
+@model BankAccounts.Models.Account
+
+@{
+    ViewData["Title"] = "A Web Page";
+}
+
+<a href="/logout">Logout</a>
+<h1>Welcome, @ViewBag.UserInfo.FirstName!</h1>
+<br>
+<h4>Current Balance: @{if(ViewBag.UserInfo.Balance > 0)
+    {
+        <span>@ViewBag.UserInfo.Balance</span>
+    } else {
+        <span>You got no MONEY!!!!!!</span>
+        }}</h4>
+<br>
+
+<div>
+    <form action="addtransaction" method="POST">
+        <label asp-for="Transaction"></label>
+        <input type="number" asp-for="Transaction">@ViewBag.error
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                
+                <td>Amount: </td>
+                <td>Date: </td>
+                    
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in ViewBag.results){
+            <tr>
+                <td>@t.Transaction</td>
+                <td>@t.CreatedAt</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
